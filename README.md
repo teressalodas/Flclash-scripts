@@ -64,6 +64,8 @@
    - emoji 国旗替换改为 `flagMap` + `replaceAll`，抽成独立的 `norm()` 函数。
    - target 映射逻辑抽成 `mapTarget()` 单行函数。
 
+* **scripts15**：修复了Google play商店下载异常的问题。
+
 ---
 
 **持续优化中，欢迎反馈使用体验！**
