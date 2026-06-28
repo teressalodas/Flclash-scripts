@@ -64,7 +64,11 @@
    - emoji 国旗替换改为 `flagMap` + `replaceAll`，抽成独立的 `norm()` 函数。
    - target 映射逻辑抽成 `mapTarget()` 单行函数。
 
-* **scripts15**：修复了Google play商店下载异常的问题。
+* **scripts15**：
+  1. **修复 Google Play 应用下载卡顿问题**：新增 `googleusercontent` 和 `xn--ngstr-lra8j` 的 `DOMAIN-KEYWORD` 规则，覆盖所有下载 CDN 域名变体，无需开启全局模式即可正常下载应用。
+  2. **引入 MetaCubeX 高级规则集**：新增 `gfw`、`cn`、`cn_additional`、`cn_ip` 等 mrs 格式规则集，并增加 QUIC 拦截规则，实现更精准的国内外分流。
+  3. **网络性能与健壮性提升**：新增 `unified-delay`、`tcp-concurrent`、`find-process-mode` 参数，以及节点有效性校验，避免生成空配置导致内核崩溃。
+
 
 ---
 
