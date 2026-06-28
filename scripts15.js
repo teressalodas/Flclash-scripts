@@ -38,7 +38,7 @@ function main(config) {
 
   const regionNames = regions.map(r => r.name);
 
-  const rp = (n, b = "classical") => ({ url: `${RULE}${n}.list`, path: `./ruleset/${n}.list`, behavior: b, interval: 86400, format: "text", type: "http" });
+  const rp = (n, b = "classical", u) => ({ url: u || `${RULE}${n}.list`, path: `./ruleset/${n}.list`, behavior: b, interval: 86400, format: "text", type: "http" });
   const rpMrs = (n, b = "domain", g = "geosite") => ({ type: "http", format: "mrs", interval: 86400, behavior: b, url: `https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/${g}/${n}.mrs`, path: `./ruleset/${n}.mrs`, "path-in-bundle": `geo/${g}/${n}.mrs` });
 
   const providers = {
@@ -52,6 +52,7 @@ function main(config) {
     cn_ip: rpMrs("cn", "ipcidr", "geoip"),
     gfw: rpMrs("gfw"),
     cn: rpMrs("cn"),
+    AdBlock: rp("AdBlock", "classical", "https://raw.githubusercontent.com/fmz200/wool_scripts/main/Loon/rule/rejectAd.list"),
   };
 
   const groupBase = { interval: 300, tolerance: 50 };
@@ -89,6 +90,7 @@ function main(config) {
     ...myManualRules,
     "RULE-SET,LocalAreaNetwork,DIRECT",
     "RULE-SET,UnBan,DIRECT",
+    "RULE-SET,AdBlock,REJECT",
     "RULE-SET,BanAD,REJECT",
     "RULE-SET,BanProgramAD,REJECT",
     ...custom,
