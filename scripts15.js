@@ -5,7 +5,8 @@ function main(config) {
   const ratioRe = /(?:\[(\d+(?:\.\d+)?)\s*[xX×]\]|(\d+(?:\.\d+)?)\s*[xX×倍]|[xX×倍]\s*(\d+(?:\.\d+)?))/i;
   const myManualRules = [
     "DOMAIN-SUFFIX,googleapis.cn,节点选择",
-    "DOMAIN-SUFFIX,xn--ngstr-lra8j.com,节点选择",
+    "DOMAIN-KEYWORD,googleusercontent,节点选择",
+    "DOMAIN-KEYWORD,xn--ngstr-lra8j,节点选择",
   ];
 
   const allProxies = config.proxies || [];
