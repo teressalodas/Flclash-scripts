@@ -40,11 +40,7 @@ function main(config) {
     applications: createProvider('loy', 'applications', 'yaml', 'classical'),
     telegramcidr: createProvider('loy', 'telegramcidr', 'yaml', 'ipcidr'),
     private: createProvider('loy', 'private', 'text', 'domain'),
-    reject: createProvider('loy', 'reject', 'text', 'domain'),
-    "tld-not-cn": createProvider('loy', 'tld-not-cn', 'text', 'domain'),
-    gfw: createProvider('loy', 'gfw', 'text', 'domain'),
-    proxy: createProvider('loy', 'proxy', 'text', 'domain'),
-    direct: createProvider('loy', 'direct', 'text', 'domain')
+    gfw: createProvider('loy', 'gfw', 'text', 'domain')
   };
 
   config["proxy-groups"] = [
@@ -76,13 +72,9 @@ function main(config) {
     "RULE-SET,AdBlock,REJECT",
     "RULE-SET,BanAD,REJECT",
     "RULE-SET,BanProgramAD,REJECT",
-    "RULE-SET,reject,REJECT",
-    "RULE-SET,tld-not-cn,节点选择",
     "RULE-SET,gfw,节点选择",
-    "RULE-SET,proxy,节点选择",
     "RULE-SET,telegramcidr,节点选择", 
     ...custom,
-    "RULE-SET,direct,DIRECT",
     "GEOIP,LAN,DIRECT,no-resolve",
     "GEOIP,CN,DIRECT,no-resolve",
     "MATCH,节点选择"
