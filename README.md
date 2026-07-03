@@ -69,7 +69,7 @@
   2. **引入 MetaCubeX 高级规则集**：新增 `gfw`、`cn`、`cn_additional`、`cn_ip` 等 mrs 格式规则集，并增加 QUIC 拦截规则，实现更精准的国内外分流。
   3. **网络性能与健壮性提升**：新增 `unified-delay`、`tcp-concurrent`、`find-process-mode` 参数，以及节点有效性校验，避免生成空配置导致内核崩溃。
 
-* **scripts16**：所有策略组统一重构为全手动选择，移除后台自动测速机制，并新增独立“其他节点”组收纳冷门地域。移除了对高倍率节点的过滤。
+* **scripts16**：移除高倍率过滤、url-test 自动测速、手动切换分组及多套冗余规则集(LocalAreaNetwork/UnBan/BanAD/ProxyGFWlist/ChinaDomain 等),规则集统一精简为 AdBlock + gfw(mrs 格式);地区分组改为轻量级函数匹配并支持去重,proxy-groups 恢复为手动选择。
 
 
 ---
