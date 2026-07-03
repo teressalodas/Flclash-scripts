@@ -1,6 +1,4 @@
 function main(config) {
-  const ICON = "https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/";
-
   const blackRe = /(?<!集)群|邀请|返利|官方|官网|网址|订阅|购买|续费|剩余|到期|过期|流量|备用|邮箱|客服|联系|工单|倒卖|防止|梯子|tg|发布|重置/i;
   const proxies = (config.proxies || []).filter(p => p?.name && !blackRe.test(p.name));
   if (!proxies.length) throw new Error('无有效代理节点');
@@ -28,11 +26,11 @@ function main(config) {
 
   config["rule-providers"] = {
     AdBlock: { type: "http", format: "text", behavior: "classical", interval: 86400, url: "https://fastly.jsdelivr.net/gh/fmz200/wool_scripts@main/Loon/rule/rejectAd.list", path: "./ruleset/AdBlock.list" },
-    applications: { type: "http", format: "yaml", behavior: "classical", interval: 86400, url: "https://fastly.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/applications.txt", path: "./ruleset/applications.yaml" },
-    private: { type: "http", format: "text", behavior: "domain", interval: 86400, url: "https://fastly.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt", path: "./ruleset/private.txt" },
-    gfw: { type: "http", format: "text", behavior: "domain", interval: 86400, url: "https://fastly.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt", path: "./ruleset/gfw.txt" }
+    private: { type: "http", format: "mrs", behavior: "domain", interval: 86400, url: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/private.mrs", path: "./ruleset/private.mrs" },
+    gfw: { type: "http", format: "mrs", behavior: "domain", interval: 86400, url: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/gfw.mrs", path: "./ruleset/gfw.mrs" }
   };
 
+  const ICON = "https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/";
   config["proxy-groups"] = [
     { name: "节点选择", icon: `${ICON}Proxy.png`, type: "select", proxies: [...regionNames, ...(hasOther ? ["其他节点"] : []), "DIRECT"] },
     ...regions.map(r => ({ name: r.name, icon: `${ICON}${r.icon}`, type: "select", proxies: r.matched })),
@@ -56,7 +54,6 @@ function main(config) {
   config.rules = [
     "DOMAIN,clash.razord.top,DIRECT",
     "DOMAIN,yacd.haishan.me,DIRECT",
-    "RULE-SET,applications,DIRECT",
     "RULE-SET,private,DIRECT",
     "RULE-SET,AdBlock,REJECT",
     "RULE-SET,gfw,节点选择",
