@@ -48,6 +48,7 @@ function main(config) {
   const custom = (config.rules || [])
     .filter(r => !r.startsWith("MATCH,"))
     .map(r => {
+      if (/^(AND|OR|NOT|SUB-RULE),/i.test(r)) return r;
       const parts = r.split(',');
       if (parts.length >= 3 && !validTargets.has(parts[2].trim())) {
         parts[2] = "节点选择";
