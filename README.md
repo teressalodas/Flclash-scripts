@@ -71,6 +71,7 @@
 
 * **scripts16**：移除高倍率过滤、url-test 自动测速、手动切换分组及多套冗余规则集(LocalAreaNetwork/UnBan/BanAD/ProxyGFWlist/ChinaDomain 等),规则集统一精简为 AdBlock + gfw(mrs 格式);地区分组改为轻量级函数匹配并支持去重,proxy-groups 恢复为手动选择。
 
+* **scripts17**：去掉了脚本自带的广告拦截和 GFW 分流逻辑，改为完全信任并保留机场自己的规则配置，只做必要的报错防护。
 
 ---
 
