@@ -33,10 +33,10 @@ function main(config) {
 
   const ICON = "https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/";
   config["proxy-groups"] = [
-    { name: "节点选择", icon: `${ICON}Proxy.png`, type: "select", proxies: [...regionNames, ...(hasOther ? ["其他节点"] : []), "DIRECT"] },
+    { name: "节点选择", icon: `${ICON}Proxy.png`, type: "select", proxies: [...regionNames, ...(hasOther ? ["其他节点"] : [])] },
     ...regions.map(r => ({ name: r.name, icon: `${ICON}${r.icon}`, type: "select", proxies: r.matched })),
     hasOther ? { name: "其他节点", icon: `${ICON}Available.png`, type: "select", proxies: otherProxies } : null,
-    { name: "GLOBAL", icon: `${ICON}Global.png`, type: "select", proxies: ["节点选择", ...regionNames, ...(hasOther ? ["其他节点"] : []), "DIRECT"] },
+    { name: "GLOBAL", icon: `${ICON}Global.png`, type: "select", proxies: ["节点选择", ...regionNames, ...(hasOther ? ["其他节点"] : [])] },
   ].filter(Boolean);
 
   const validTargets = new Set([
